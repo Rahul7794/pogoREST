@@ -62,7 +62,7 @@ pogoREST can be built using various options:
 
 ### Run PogoREST
 
-Check if the db container is up and running:
+Or Check if the db container is up and running:
 
 ```
 docker ps        #you should be able to see db container informations if running
@@ -71,11 +71,13 @@ su postgres      # username to connect
 psql             # it will open the terminal for postgres
 ```
 
+If the db container is running already then run:
+
+`./pogorest server -d postgres`
+
 Make sure the db connection details is fed to `connection/postgres.json`.
 
-`docker-compose up -d` - Spins up postgres container and then the application container.
-
-Once the docker-compose runs successfully the application will run exposing port `8081`.
+Once the application runs successfully, it will be exposing port `8081`.
 
 ![echo](static/echo-service.png)
 
