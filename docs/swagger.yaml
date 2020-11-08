@@ -1,0 +1,52 @@
+basePath: /api/v1
+definitions:
+  errors.HTTPError:
+    properties:
+      code:
+        type: integer
+      msg:
+        type: string
+    type: object
+  model.User:
+    properties:
+      city:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+    type: object
+host: localhost:8081
+info:
+  contact: {}
+  description: This is a user management application
+  title: User Application
+  version: "1.0"
+paths:
+  /user:
+    post:
+      consumes:
+      - application/json
+      description: Create a model.User record in DB
+      parameters:
+      - description: New model.User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/model.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errors.HTTPError'
+      summary: Create a model.User record
+      tags:
+      - users
+swagger: "2.0"
